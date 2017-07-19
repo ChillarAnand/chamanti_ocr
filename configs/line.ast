@@ -1,6 +1,6 @@
 {
 # Training
-'num_epochs': 10000,
+'num_epochs': 1000,
 'num_samples': 1000,     # Online: Number of samples per epoch
 'train_on_fraction': .8, # Offline use only
 
@@ -15,7 +15,7 @@
     'maxangle':	.05,
     'size':	    24,
     'noise':    .05,
-    'nchars_per_sample': 3,
+    'nchars_per_sample': 40,
     },
 
 # Neural network.
@@ -24,7 +24,7 @@
 
     'mid_layer': 'RecurrentLayer',
     'mid_layer_args': {
-        'nunits': 25,
+        'nunits': 100,
         'learn_init_state':False},
 
     'optimizer': 'sgd',

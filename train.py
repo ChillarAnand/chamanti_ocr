@@ -85,19 +85,26 @@ for epoch in range(num_epochs):
             print('Exiting on account of Inf Cost...')
             break
 
-        if samp == 0 and epoch==num_epochs-1:   # or len(y) == 0:
+        if samp == 0:   # or len(y) == 0:
             pred, hidden = ntwk.tester(x)
 
             print('Epoch:{:6d} Cost:{:.3f}'.format(epoch, float(cst)))
             printer.show_all(y, x, pred,
                              (forward_probs > -6, 'Forward probabilities:', y_blanked),
                              ((hidden + 1)/2, 'Hidden Layer:'))
-            utils.pprint_probs(forward_probs)
+            print()
+            # utils.pprint_probs(forward_probs)
+
+        if samp % 100 == 0:
+            print('Epoch: {} \t Sample: {}'.format(epoch, samp))
 
         edit_dist += editdistance.eval(printer.decode(pred), y)
         tot_len += len(y)
 
+
+
     distances.append((edit_dist, tot_len))
+
     # wts.append(ntwk.layers[0].params[1].get_value())
     # print("Successes: {0[0]}/{0[1]}".format(edit_dist))
 

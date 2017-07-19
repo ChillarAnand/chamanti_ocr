@@ -108,21 +108,21 @@ class Printer():
             seen_labels = self.decode(softmax_firings)
             self.show_labels(seen_labels)
 
-        print('Image Shown:')
-        slab_print(shown_img)
+        # print('Image Shown:')
+        # slab_print(shown_img)
 
-        if softmax_firings is not None:
-            seen_labels = list(set(seen_labels) - set(labels))
-            seen_chars = self.labels_to_chars(seen_labels)
-            l = labels + [self.n_classes] + seen_labels
-            c = chars + ['blank'] + seen_chars
-            print('SoftMax Firings:')
-            slab_print(softmax_firings[l], c)
+        # if softmax_firings is not None:
+        #     seen_labels = list(set(seen_labels) - set(labels))
+        #     seen_chars = self.labels_to_chars(seen_labels)
+        #     l = labels + [self.n_classes] + seen_labels
+        #     c = chars + ['blank'] + seen_chars
+        #     print('SoftMax Firings:')
+        #     slab_print(softmax_firings[l], c)
 
-        for aux_img, aux_name, *col_names in aux_imgs:
-            col_names = self.labels_to_chars(col_names[0]) if col_names else None
-            print(aux_name)
-            slab_print(aux_img, col_names)
+        # for aux_img, aux_name, *col_names in aux_imgs:
+        #     col_names = self.labels_to_chars(col_names[0]) if col_names else None
+        #     print(aux_name)
+        #     slab_print(aux_img, col_names)
 
 
 def insert_blanks(y, blank, num_blanks_at_start=1):

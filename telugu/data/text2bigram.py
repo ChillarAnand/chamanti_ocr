@@ -1,11 +1,13 @@
 #! /usr/bin/python3
+
 import re
 import sys
 from collections import defaultdict, Counter
 
+
 if len(sys.argv) < 2:
     print("""Usage: {0} input_text_file [show_bigram]
-    Program counts the frequency of each Telugu letter following another and 
+    Program counts the frequency of each Telugu letter following another and
     writes out a binary <input_text_file>.bigram using pickle.
     [show_bigram] - when supplied a text file with the bigram is shown.
     """.format(sys.argv[0]))
@@ -35,16 +37,16 @@ dump.close()
 # Dump Pickle
 import pickle
 with open(sys.argv[1]+'.bigram', 'wb') as f:
-    pickle.dump((beg_line, end_line, unicount, bicount), f, 2)     
+    pickle.dump((beg_line, end_line, unicount, bicount), f, 2)
 
 # DUMP
 if len(sys.argv) < 3:
     sys.exit()
 
-fout = open('/tmp/bigram.txt', 'w')  
+fout = open('/tmp/bigram.txt', 'w')
 for key, n in sorted(unicount.items(), key=lambda x: x[1], reverse=True):
     fout.write("\n\n" + key + " : " + str(n) + "\n ")
-    for char, count in sorted(bicount[key].items(), 
+    for char, count in sorted(bicount[key].items(),
                               key=lambda x: x[1],
                               reverse=True):
         fout.write(" "+char+":"+str(count))

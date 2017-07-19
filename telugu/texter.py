@@ -3,6 +3,7 @@ import os
 import pickle
 from itertools import accumulate
 from random import random
+
 import numpy as np
 
 print("Loading the uni and bigram counts")
@@ -14,6 +15,7 @@ bi_acc_cache = {}
 bi_acc_cache_np = {}
 
 REDUCE_COUNT_BY_nTH = 8
+
 
 def get_next_char(char):
     if char in bi_acc_cache:
